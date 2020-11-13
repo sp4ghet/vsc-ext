@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "MiniML",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    { "include": "#comments" },
+    { "include": "#literals" }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.miniml",
+          "match": "\\b(if|then|else)\\b"
+        },
+        {
+          "name": "keyword.operator.arithmetic.miniml",
+          "match": "(\\+|-|\\*|<|>)"
+        },
+        { "name": "keyword.operator.miniml", "match": "(\\&\\&|\\|\\|)" },
+        { "name": "keyword.other.miniml", "match": "\\b(let|rec|fun)\\b" }
+      ]
+    },
+    "comments": {
+      "begin": "\\(\\*",
+      "end": "\\*\\)",
+      "beginCaptures": { "0": { "name": "comment.miniml" } },
+      "endCaptures": { "0": { "name": "comment.miniml" } },
+      "name": "comment.block",
+      "patterns": [{ "match": ".*" }]
+    },
+    "literals": {
+      "patterns": [
+        {
+          "name": "constant.numeric.miniml",
+          "match": "[0-9]+"
+        },
+        { "name": "constant.language.miniml", "match": "\\b(true|false)\\b" }
+      ]
+    }
+  },
+  "scopeName": "source.miniml"
+}
