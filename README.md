@@ -3,3 +3,5 @@
 ## Features
 
 Syntax Highlight for https://github.com/sp4ghet/toylang
+
+![screenshot](./assets/screenshot.png)
