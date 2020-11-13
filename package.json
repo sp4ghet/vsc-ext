@@ -1,34 +1,60 @@
 {
-    "name": "miniml-lsp",
-    "displayName": "miniml-lsp",
-    "description": "VSC extension for a toy language",
-    "version": "0.0.1",
-    "engines": {
-        "vscode": "^1.51.0"
-    },
-    "categories": [
-        "Programming Languages"
-    ],
-    "contributes": {
-        "languages": [
-            {
-                "id": "miniml",
-                "aliases": [
-                    "MiniML",
-                    "miniml"
-                ],
-                "extensions": [
-                    ".miniml"
-                ],
-                "configuration": "./language-configuration.json"
-            }
+  "name": "miniml",
+  "displayName": "miniml",
+  "description": "Extension for my toy language",
+  "version": "0.0.1",
+  "publisher": "sp4ghet",
+  "homepage": "https://github.com/sp4ghet/vsc-ext",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sp4ghet/vsc-ext"
+  },
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "categories": [
+    "Programming Languages"
+  ],
+  "engines": {
+    "vscode": "^1.42.0"
+  },
+  "activationEvents": [
+    "onLanguage:miniml"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "miniml",
+        "aliases": [
+          "MiniML",
+          "miniml"
         ],
-        "grammars": [
-            {
-                "language": "miniml",
-                "scopeName": "source.miniml",
-                "path": "./syntaxes/miniml.tmLanguage.json"
-            }
-        ]
-    }
+        "extensions": [
+          ".miniml"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "miniml",
+        "scopeName": "source.miniml",
+        "path": "./syntaxes/miniml.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint . --ext .ts,.tsx",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.0",
+    "@types/vscode": "^1.42.0",
+    "@typescript-eslint/eslint-plugin": "^3.0.2",
+    "@typescript-eslint/parser": "^3.0.2",
+    "eslint": "^7.1.0",
+    "typescript": "^4.0.2"
+  }
 }

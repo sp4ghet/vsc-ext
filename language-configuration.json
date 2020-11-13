@@ -11,8 +11,14 @@
     "autoClosingPairs": [
         [ "(", ")" ]
     ],
+    "autoCloseBefore": ";=) \n\t",
     // symbols that can be used to surround a selection
     "surroundingPairs": [
         ["(", ")"],
-    ]
+    ],
+    "indentationRules": {
+        "decreaseIndentPattern": "^\\s*(in|else)\\b|^\\s*;;",
+        "increaseIndentPattern": "^\\blet [a-zA-Z0-9_-]+( [^ ]+)* =\\s*$|(\\bif\\s+.*\\sthen$|\\belse)\\s*$",
+        "indentNextLinePattern": "(?!\\bif.*then.*(else.*|(;|[ \\t]in)[ \\t]*$))\\bif|\\bthen[ \\t]*$|\\belse[ \\t]*$$"
+    }
 }

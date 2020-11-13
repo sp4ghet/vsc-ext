@@ -2,10 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "MiniML",
   "patterns": [
-    {
-      "include": "#keywords"
-    },
     { "include": "#comments" },
+    { "include": "#bindings" },
+    { "include": "#keywords" },
     { "include": "#literals" }
   ],
   "repository": {
@@ -23,6 +22,19 @@
         { "name": "keyword.other.miniml", "match": "\\b(let|rec|fun)\\b" }
       ]
     },
+    "bindings": {
+      "patterns": [
+        {
+          "comment": "let expression",
+          "match": "\\b(let)[[:space:]]+(?!lazy\\b(?!'))(rec[[:space:]]+)?(?!rec\\b(?!'))([[:lower:]_][[:word:]']*)[[:space:]]+(?!,|::)",
+          "captures": {
+            "1": { "name": "keyword.miniml" },
+            "2": { "name": "keyword.miniml" },
+            "3": { "name": "entity.name.function.binding.miniml" }
+          }
+        }
+      ]
+    },
     "comments": {
       "begin": "\\(\\*",
       "end": "\\*\\)",
@@ -34,10 +46,20 @@
     "literals": {
       "patterns": [
         {
+          "comment": "integer literal",
           "name": "constant.numeric.miniml",
           "match": "[0-9]+"
         },
-        { "name": "constant.language.miniml", "match": "\\b(true|false)\\b" }
+        {
+          "comment": "wildcard underscore",
+          "name": "constant.language.miniml",
+          "match": "\\b_\\b"
+        },
+        {
+          "comment": "boolean literal",
+          "name": "constant.language.boolean.miniml",
+          "match": "\\b(true|false)\\b"
+        }
       ]
     }
   },
